@@ -5,7 +5,7 @@ function Personne (nom, prenom, pseudo){
   this.pseudo = pseudo;
   this.getNomComplet = function() {
   console.log(this.prenom + " " + this.nom + " " + this.pseudo);
-}
+  }
   this.getInitiales = function() {
     return this.prenom.charAt(0) + this.nom.charAt(0);
   }
@@ -39,8 +39,20 @@ robert = {
   prenom: "Robert",
   nom: "LEPREFET",
   pseudo: "robert77",
-  afficherNomComplet: function() {
-    console.log(prenom + " " + nom + " " + pseudo);
+  getNomComplet: function() {
+    console.log(this.prenom + " " + this.nom + " " + this.pseudo);
   }
 };
 afficherPersonne(robert);
+function Client(nom, prenom, pseudo, numeroClient) {
+  Personne.call(this, nom, prenom, pseudo);
+  this.numeroClient = numeroClient;
+  this.getInfos = function() {
+    return "numero : " + this.numeroClient + ", nom : " + this.nom + ", prénom : " + this.prenom;
+  };
+}
+
+steve = new Client("LUCAS", "Steve", "steve44", "A01");
+Personne.call(afficherPersonne(steve));
+console.log(steve.numeroClient);
+console.log(steve.getInfos());
